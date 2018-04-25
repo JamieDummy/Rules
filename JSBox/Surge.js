@@ -1,9 +1,9 @@
 /*
     Surge conf builder
-    
+
     作者：https://t.me/miniers
-    
-    修改：lhie1
+
+    修改：Fakecode
 */
 const _ = require('lodash');
 $app.autoKeyboardEnabled = true;
@@ -94,7 +94,7 @@ function initConfig() {
 loglevel = notify
 dns-server = system,1.2.4.8,80.80.80.80,80.80.81.81,1.1.1.1,1.0.0.1
 skip-proxy = 127.0.0.1,192.168.0.0/16,10.0.0.0/8,172.16.0.0/12,100.64.0.0/10,17.0.0.0/8,localhost,*.local,*.crashlytics.com,::ffff:0.0.0.0/1,::ffff:128.0.0.0/1
-  
+
 // iOS
 external-controller-access = lhie1@0.0.0.0:6170
 
@@ -158,7 +158,7 @@ function buildFile() {
   var result = `
 [General]
 ${config.General}
-[Proxy] 
+[Proxy]
 🚀 Direct = direct
 # my Proxy
 ${config.Proxy}
@@ -172,7 +172,7 @@ ${config.extProxy}
 ☁️ Others =  select,🚀 Direct,🍃 Proxy
 🏃 Auto = url-test,${config.AutoGroup},url = http://www.gstatic.com/generate_204, interval = 1200
 # my extProxyGroup
-${config.extProxyGroup}  
+${config.extProxyGroup}
 
 [Rule]
 # my custom
@@ -186,7 +186,7 @@ ${remoteRule.PROXY}
 # remote DIRECT
 ${remoteRule.DIRECT}
 
-# my ipRule  
+# my ipRule
 ${config.ipRule}
 // Detect local network
 GEOIP,CN,🍂 Domestic
@@ -194,13 +194,13 @@ GEOIP,CN,🍂 Domestic
 FINAL,☁️ Others,dns-failed
 
 [Host]
-# my host  
+# my host
 ${config.Host}
 # remote HOST
 ${remoteRule['HOST']}
 
- 
-[URL Rewrite] 
+
+[URL Rewrite]
 # my Rewrite
 ${config.Rewrite}
 # remote URL Rewrite
@@ -208,7 +208,7 @@ ${remoteRule['URL Rewrite']}
 # remote URL REJECT
 ${remoteRule['URL REJECT']}
 
-[Header Rewrite] 
+[Header Rewrite]
 # remote Header Rewrite
 ${remoteRule['Header Rewrite']}
 
@@ -219,7 +219,7 @@ ${remoteRule['TestFlight']}
 [SSID Setting]
 # my SSID
 ${config.SSID}
- 
+
 # MITM
 ${config.MITM?'[MITM]':''}
 ${config.MITM?`hostname = ${cushostname?cushostname+",":""}${remoteRule.Hostname.split('\n').join(',')}`:''}
