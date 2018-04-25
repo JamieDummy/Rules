@@ -4,6 +4,7 @@
     作者：https://t.me/miniers
 
     修改：Fakecode
+    修改测试
 */
 const _ = require('lodash');
 $app.autoKeyboardEnabled = true;
